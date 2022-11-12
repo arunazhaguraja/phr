@@ -23,7 +23,7 @@ class Ktextformfield extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
 
-            hintStyle: TextStyle(color: Colors.grey,fontFamily: "WorkSansLight"),
+            hintStyle: TextStyle(color: Colors.grey,fontFamily: "WorkSansLight",fontWeight: FontWeight.bold),
             filled: true,
             fillColor: Colors.white,
             hintText: hinttext),

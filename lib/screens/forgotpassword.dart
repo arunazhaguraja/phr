@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/screens/forgotpassword.dart';
 
 import '../Components/Ktextformfield.dart';
+import 'otp.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class ForgotPassword extends StatelessWidget {
+  const ForgotPassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,19 +43,22 @@ class Login extends StatelessWidget {
                         right: 0,
                         left: 0,
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (c)=>OTP()));
+
+                          },
                           child: Container(
                             child: Center(
                                 child: Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: width / 20,
-                                  fontWeight: FontWeight.bold),
-                            )),
+                                  "Get OTP",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: width / 25,
+                                      fontWeight: FontWeight.bold),
+                                )),
                             height: 54,
                             margin:
-                                EdgeInsets.symmetric(horizontal: width * 0.1),
+                            EdgeInsets.symmetric(horizontal: width * 0.1),
                             decoration: BoxDecoration(
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(10),
@@ -78,77 +81,42 @@ class Login extends StatelessWidget {
                               children: [
                                 Expanded(
                                     child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset("assets/1.png"),
-                                )),
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image.asset("assets/1.png"),
+                                    )),
                                 Expanded(
                                     child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset("assets/2.png"),
-                                )),
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image.asset("assets/2.png"),
+                                    )),
                                 Expanded(
                                     child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset("assets/3.png"),
-                                )),
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image.asset("assets/3.png"),
+                                    )),
                               ],
                             ),
                           ),
+                          SizedBox(
+                            height: height*0.05,
+                          ),
                           Text(
-                            "Login",
+                            "Forgot Password",
                             style: TextStyle(
-                                fontSize: width / 12,
+                                fontSize: width / 15,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                                 height: height * 0.003),
                           ),
-                          Text(
-                            "Please sign in to continue.",
-                            style: TextStyle(
-                                fontSize: width / 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                height: height * 0.003),
+
+                          Ktextformfield(
+                            logo: Icons.email_outlined,
+                            hinttext: "E-mail address",
                           ),
                           Ktextformfield(
-                            logo: Icons.person,
-                            hinttext: "Username",
+                            logo: Icons.phone_android_outlined,
+                            hinttext: "Mobile Number",
                           ),
-                          Ktextformfield(
-                            logo: Icons.key_rounded,
-                            hinttext: "Password",
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                child: Text(
-                                  "Forget Password",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: width / 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                onTap: (){
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (c)=>ForgotPassword()));
-                                },
-                              ),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              CircleAvatar(
-                                backgroundColor: Colors.red,
-                                radius: 15,
-                                child: Builder(builder: (context) {
-                                  return CircleAvatar(
-                                      radius: 13,
-                                      backgroundColor: Colors.white,
-                                      child: Icon(Icons.question_mark_rounded,
-                                          color: Colors.red));
-                                }),
-                              ),
-                            ],
-                          )
                         ],
                       ),
                     )
@@ -161,12 +129,12 @@ class Login extends StatelessWidget {
               TextSpan(
                 children: [
                   TextSpan(
-                      text: 'Do you need help? ',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                      text: "Haven't received the code? ",
+                      style: TextStyle()),
                   TextSpan(
-                    text: 'Click here',
+                    text: 'Resend OTP',
                     style: TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.bold),
+                        color: Colors.blue[900], fontWeight: FontWeight.bold),
                   ),
                 ],
               ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/screens/forgotpassword.dart';
 import 'package:untitled/screens/login.dart';
+import 'package:untitled/screens/otp.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: Login(),
+      home: OTP(),
     );
   }
 }
