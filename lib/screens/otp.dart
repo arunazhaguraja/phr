@@ -116,7 +116,7 @@ class OTP extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 20),
                                     child: GestureDetector(
-                                      onTap: () {},
+                                      onTap: () { },
                                       child: Container(
                                         child: Center(
                                             child: Text(
