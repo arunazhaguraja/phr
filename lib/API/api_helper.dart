@@ -5,7 +5,7 @@ import 'dart:async';
 
 class ApiBaseHelper {
   final String _baseUrl =
-      "https://tncwwb.timesmed.com/Login/AppLoginAPI?Username=9488994592&Password=password";
+      "https://tncwwb.timesmed.com/";
 
   Future<dynamic> get(String url) async {
     print('Api Get, url $url');
