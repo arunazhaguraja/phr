@@ -80,7 +80,7 @@ class _LoginState extends State<Login> {
                                   "Login Success") {
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                        builder: (context) => WebView()));
+                                        builder: (context) => WebViewPage(url: response["RedirectURL"])));
                               } else {
                                 showAlertDialog(
                                     context, response["ResponseMessage"]);
