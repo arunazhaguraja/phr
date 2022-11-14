@@ -127,7 +127,7 @@ class Login extends StatelessWidget {
                             Ktextformfield(
                               validator: (val) {
                                 print("valllllllllllllllllllllll$val");
-                                if (!val!.isValidName || !val!.isValidPhone) return 'Enter valid Username';
+                                if (val.toString().isEmpty) return 'Enter valid Username';
                               },
                               logo: Icons.person,
                               hinttext: "Username",
@@ -135,7 +135,7 @@ class Login extends StatelessWidget {
                             Ktextformfield(
                               validator: (val) {
 
-                                if (!val!.isValidPassword) return 'Enter valid password';
+                                if () return 'Enter valid password';
                               },
                               logo: Icons.key_rounded,
                               hinttext: "Password",
