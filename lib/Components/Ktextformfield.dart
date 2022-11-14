@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Ktextformfield extends StatelessWidget {
   final logo ,hinttext;
+  final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
   const Ktextformfield({
     Key? key,
-    required this.logo, required this.hinttext,
+    required this.logo, required this.hinttext, required this.validator ,     this.inputFormatters,
 
   }) : super(key: key);
 
@@ -13,6 +16,7 @@ class Ktextformfield extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: TextFormField(
+        validator: validator,
         decoration:  InputDecoration(
             prefixIcon: Icon(
               logo,
@@ -30,4 +34,32 @@ class Ktextformfield extends StatelessWidget {
       ),
     );
   }
+}
+
+extension extString on String {
+  bool get isValidEmail {
+    final emailRegExp = RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    return emailRegExp.hasMatch(this);
+  }
+
+  bool get isValidName{
+    final nameRegExp = new RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$");
+    return nameRegExp.hasMatch(this);
+  }
+
+  bool get isValidPassword{
+    final passwordRegExp =
+    RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\><*~]).{8,}/pre>');
+    return passwordRegExp.hasMatch(this);
+  }
+
+  bool get isNotNull{
+    return this!=null;
+  }
+
+  bool get isValidPhone{
+    final phoneRegExp = RegExp(r"^\+?0[0-9]{10}$");
+    return phoneRegExp.hasMatch(this);
+  }
+
 }
