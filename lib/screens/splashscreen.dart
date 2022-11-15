@@ -25,8 +25,29 @@ class _SplashPageLoadingState extends State<SplashPageLoading> {
   void checkUserIsLogged() async {
     final prefs = await SharedPreferences.getInstance();
     if ((prefs.getBool('isLoggedIn') == true)) {
+      print("dateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee${prefs.getStringList('whenloggedin')![0]}");
+
+      var nowloggedin = DateTime.now();
+
+      print("dateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee${nowloggedin.year}");
+
+      var from = DateTime(int.parse(prefs.getStringList('whenloggedin')![0]), int.parse(prefs.getStringList('whenloggedin')![1]), int.parse(prefs.getStringList('whenloggedin')![2]));
+      var to = DateTime(nowloggedin.year, nowloggedin.month, nowloggedin.day);
+
+      var numberofdaysloggedin=(to.difference(from).inHours / 24).round();
+      print("dateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee${numberofdaysloggedin}");
+
+
       setState(() {
-        _doLogin = true;
+        if(numberofdaysloggedin>=30)
+          {
+            _doLogin = false;
+
+          }
+        else{
+          _doLogin = true;
+
+        }
       });
       apiBaseHelper.get(
           'Login/AppLoginAPI?Username=${prefs.getString('username')}&Password=${prefs.getString('password')}').then((response) {

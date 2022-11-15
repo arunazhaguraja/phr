@@ -33,6 +33,7 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.blue[50],
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Form(
           key: _formKey,
           child: Column(
@@ -79,10 +80,13 @@ class _LoginState extends State<Login> {
 
                               if (response["ResponseMessage"] ==
                                   "Login Success") {
+
+                                var whenloggedin = DateTime.now();
                                 final prefs = await SharedPreferences.getInstance();
                                 await prefs.setString('username', usernameController.value.text.trim());
                                 await prefs.setString('password', passwordController.value.text.trim());
                                 await prefs.setBool('isLoggedIn', true);
+                                await prefs.setStringList('whenloggedin', <String>[whenloggedin.year.toString(), whenloggedin.month.toString(), whenloggedin.day.toString()]);
 
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(

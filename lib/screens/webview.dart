@@ -56,6 +56,7 @@ class _WebViewPageState extends State<WebViewPage> {
                     final prefs = await SharedPreferences.getInstance();
                     await prefs.remove('username');
                     await prefs.remove('password');
+                    await prefs.remove('whenloggedin');
                     await prefs.setBool('isLoggedIn', false);
                     // Won't redirect url
                     print('Trying to logout');
