@@ -124,8 +124,12 @@ class ForgotPassword extends StatelessWidget {
 
                               logo: Icons.email_outlined,
                               hinttext: "E-mail address",
+                              isobscureText: false,
+
                             ),
                             Ktextformfield(
+                              isobscureText: false,
+
                               inputFormatters: [
                                 FilteringTextInputFormatter.allow(
                                   RegExp(r"[0-9]"),

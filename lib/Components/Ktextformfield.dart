@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Ktextformfield extends StatelessWidget {
-  final logo ,hinttext,controller,keyboardType;
+  final logo ,hinttext,controller,keyboardType,isobscureText;
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
   const Ktextformfield({
     Key? key,
-    required this.logo, required this.hinttext, required this.validator , this.inputFormatters, this.controller, this.keyboardType
+    required this.logo, required this.hinttext, required this.validator , this.inputFormatters, this.controller, this.keyboardType , required this.isobscureText
 
   }) : super(key: key);
 
@@ -17,6 +17,7 @@ class Ktextformfield extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       child: TextFormField(
         validator: validator,
+        obscureText: isobscureText,
         keyboardType: keyboardType,
         controller: controller,
         decoration:  InputDecoration(

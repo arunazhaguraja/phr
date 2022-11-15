@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled/API/api_helper.dart';
 import 'package:untitled/screens/forgotpassword.dart';
 import 'package:untitled/screens/webview.dart';
@@ -78,6 +79,11 @@ class _LoginState extends State<Login> {
 
                               if (response["ResponseMessage"] ==
                                   "Login Success") {
+                                final prefs = await SharedPreferences.getInstance();
+                                await prefs.setString('username', usernameController.value.text.trim());
+                                await prefs.setString('password', passwordController.value.text.trim());
+                                await prefs.setBool('isLoggedIn', true);
+
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                         builder: (context) => WebViewPage(url: response["RedirectURL"])));
@@ -162,6 +168,7 @@ class _LoginState extends State<Login> {
                               logo: Icons.person,
                               hinttext: "Username",
                               controller: usernameController,
+                              isobscureText: false,
                               keyboardType: TextInputType.number,
                             ),
                             Ktextformfield(
@@ -171,6 +178,7 @@ class _LoginState extends State<Login> {
                               },
                               logo: Icons.key_rounded,
                               hinttext: "Password",
+                              isobscureText: true,
                               controller: passwordController,
                             ),
                             Row(
